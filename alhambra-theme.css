@@ -1,61 +1,49 @@
 /* ==========================================================
    Alhambra Go · tema para la página de grupo de OGS
-   Paleta: rojo almagra, oro nazarí, verde azulejo, yeso marfil
+   Estética de alhambra-go.club: blanco y negro minimalista,
+   titulares en DM Serif Display, texto en Source Sans,
+   filetes finos negros y piedras de go como único adorno.
    ========================================================== */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@400;600;700&display=swap');
 
 :root {
-  --ag-night: #0d171b;
-  --ag-panel: #13232a;
-  --ag-panel-2: #183039;
-  --ag-tile: #1f5a5e;
-  --ag-tile-soft: #8fc7c0;
-  --ag-red: #a8432f;
-  --ag-terracotta: #c4683f;
-  --ag-gold: #c9a24a;
-  --ag-gold-soft: #e3c983;
-  --ag-stucco: #efe6d2;
-  --ag-text: #e6dfcd;
-  --ag-muted: #a9b3ad;
+  --ag-ink: #000;
+  --ag-paper: #fff;
+  --ag-muted: #64748b;
+  --ag-line: #e2e8f0;
+  --ag-soft: #f8fafc;
+  --ag-serif: 'DM Serif Display', Georgia, serif;
+  --ag-sans: 'Source Sans 3', 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
 }
 
-/* ---------- Fondo: celosía de estrellas de ocho puntas ---------- */
+/* ---------- Página ---------- */
 html, body {
-  min-height: 100%;
-  background:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23c9a24a' stroke-opacity='.11' stroke-width='1'%3E%3Crect x='22' y='22' width='36' height='36'/%3E%3Crect x='22' y='22' width='36' height='36' transform='rotate(45 40 40)'/%3E%3Ccircle cx='40' cy='40' r='6'/%3E%3Cpath d='M0 0L22 22M80 0L58 22M0 80L22 58M80 80L58 58'/%3E%3C/g%3E%3C/svg%3E"),
-    radial-gradient(ellipse at 50% -20%, #2a1a14 0%, #13232a 45%, #0a1215 100%) fixed !important;
-  background-size: 80px 80px, auto !important;
-  color: var(--ag-text) !important;
-  font-family: 'Inter', sans-serif !important;
+  background: var(--ag-paper) !important;
+  color: var(--ag-ink) !important;
+  font-family: var(--ag-sans) !important;
 }
 
-/* ---------- Contenedor principal ---------- */
 .Group.container {
-  position: relative;
   max-width: 1200px !important;
   margin: 1.5rem auto 4rem !important;
-  padding: 0 !important;
-  color: var(--ag-text) !important;
-  border: 1px solid rgba(201, 162, 74, .35);
-  border-radius: 10px;
-  background: linear-gradient(160deg, rgba(19, 35, 42, .97), rgba(10, 18, 21, .98)) !important;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, .55), 0 0 0 6px rgba(201, 162, 74, .05) !important;
-  overflow: hidden;
+  padding: 0 1rem !important;
+  background: var(--ag-paper) !important;
+  color: var(--ag-ink) !important;
+  border: 0 !important;
+  box-shadow: none !important;
 }
 
-/* Franja superior tipo friso de yesería */
+/* Franja superior entre filetes, como el menú de la web */
 .Group.container::before {
   content: 'ALHAMBRA GO  ·  CLUB DE GO DE GRANADA';
   display: block;
-  padding: .65rem 1rem;
-  background:
-    linear-gradient(90deg, transparent, rgba(201, 162, 74, .18), transparent),
-    var(--ag-red);
-  border-bottom: 2px solid var(--ag-gold);
-  color: var(--ag-stucco);
-  font: 600 .7rem 'Inter', sans-serif;
-  letter-spacing: .28em;
+  margin-bottom: 1.25rem;
+  padding: .7rem 0;
+  border-top: 1px solid var(--ag-ink);
+  border-bottom: 1px solid var(--ag-ink);
+  color: var(--ag-ink);
+  font: 400 .8rem var(--ag-sans);
+  letter-spacing: .2em;
   text-align: center;
   white-space: pre;
 }
@@ -63,194 +51,197 @@ html, body {
 
 /* ---------- Banner ---------- */
 .Group .banner {
-  position: relative;
-  margin: 0 !important;
+  margin: 0 0 1.25rem !important;
   border: 0 !important;
-  border-bottom: 1px solid rgba(201, 162, 74, .4) !important;
   border-radius: 0 !important;
-  overflow: hidden;
+  box-shadow: none !important;
+  background: none !important;
 }
-.Group .banner::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(180deg, transparent 55%, rgba(10, 18, 21, .85));
-}
-.Group .banner img { width: 100% !important; object-fit: cover; }
-.Group > .row { padding: 1.25rem !important; }
+.Group .banner img { width: 100% !important; object-fit: cover; border-radius: 0 !important; }
 
-/* ---------- Títulos ---------- */
+/* ---------- Tarjetas: sin sombras, solo un filete arriba ---------- */
+.Group .Card {
+  margin-bottom: 1.5rem !important;
+  padding: 1rem 0 !important;
+  border: 0 !important;
+  border-top: 1px solid var(--ag-ink) !important;
+  border-radius: 0 !important;
+  background: var(--ag-paper) !important;
+  box-shadow: none !important;
+  color: var(--ag-ink) !important;
+}
+
+/* ---------- Cabecera del grupo ---------- */
 .Group h2 {
-  margin: .25rem 0 1rem !important;
-  color: var(--ag-stucco) !important;
-  font: 700 clamp(2.2rem, 5vw, 3.8rem)/1 'Cormorant Garamond', serif !important;
-  letter-spacing: .01em !important;
-  text-shadow: 0 3px 18px rgba(0, 0, 0, .5) !important;
-}
-.Group h2::after {
-  content: '';
-  display: block;
-  width: 120px;
-  height: 10px;
-  margin-top: .8rem;
-  background:
-    radial-gradient(circle, var(--ag-gold) 0 3px, transparent 4px) center / 10px 10px no-repeat,
-    linear-gradient(var(--ag-gold), var(--ag-gold)) left center / 50px 1px no-repeat,
-    linear-gradient(var(--ag-gold), var(--ag-gold)) right center / 50px 1px no-repeat;
-}
-/* Títulos de las noticias: más pequeños y sin remate */
-.Group .news h2,
-.Group .news h4,
-.Group .news .title,
-.Group .news .news-title {
-  margin: .6rem 0 .4rem !important;
-  font: 700 1.35rem/1.2 'Cormorant Garamond', serif !important;
+  margin: 0 0 .6rem !important;
+  color: var(--ag-ink) !important;
+  font: 400 clamp(2.2rem, 4.5vw, 3.2rem)/1.05 var(--ag-serif) !important;
   letter-spacing: 0 !important;
   text-shadow: none !important;
-  color: var(--ag-gold-soft) !important;
 }
-.Group .news h2::after { display: none !important; }
+.Group h2::before, .Group h2::after { content: none !important; display: none !important; }
 
-.Group h3, .Group h4, .Group table caption {
-  color: var(--ag-gold-soft) !important;
-  font-family: 'Cormorant Garamond', serif !important;
-  font-weight: 700 !important;
-  font-size: 1.35em;
-  letter-spacing: .02em;
+.Group .admins,
+.Group .pad {
+  padding: .15rem 0 !important;
+  border: 0 !important;
+  background: none !important;
+  color: var(--ag-ink) !important;
 }
-
-.Group .admins {
-  padding: .6rem .8rem !important;
-  border-left: 3px solid var(--ag-terracotta);
-  background: rgba(196, 104, 63, .08);
-  color: var(--ag-muted) !important;
-}
-
-/* ---------- Tarjetas y paneles ---------- */
-.Group .Card,
-.Group .pad,
-.Group .members,
-.Group .news,
-.Group .ladders,
-.Group .invitation-requests {
-  margin-bottom: 1rem !important;
-  border: 1px solid rgba(201, 162, 74, .18) !important;
-  border-radius: 8px !important;
-  background: linear-gradient(135deg, rgba(255, 255, 255, .025), transparent 45%), var(--ag-panel) !important;
-  box-shadow: 0 12px 26px rgba(0, 0, 0, .25), inset 0 1px rgba(255, 255, 255, .03) !important;
-  color: var(--ag-text) !important;
-}
-.Group .Card > h3, .Group .Card > h4,
-.Group .members h3, .Group .news h3, .Group .ladders h3 {
-  margin: 0 !important;
-  padding: .7rem 1rem !important;
-  border-bottom: 1px solid rgba(201, 162, 74, .2);
-  background: linear-gradient(90deg, var(--ag-panel-2), var(--ag-panel)) !important;
+.Group .admins b,
+.Group .pad b {
+  margin-right: .35em;
+  color: var(--ag-muted);
+  font-weight: 600;
+  font-size: .78rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
 }
 
-/* ---------- Enlaces y botones ---------- */
-.Group a, .Group .Player { color: var(--ag-tile-soft) !important; }
-.Group a:hover, .Group .Player:hover { color: var(--ag-stucco) !important; }
+/* ---------- Encabezados de tablas (Novedades, Miembros…) ---------- */
+.Group h3, .Group h4, .Group table caption,
+.Group thead th {
+  padding: 0 0 .5rem !important;
+  border: 0 !important;
+  background: none !important;
+  color: var(--ag-ink) !important;
+  font: 400 1.6rem/1.2 var(--ag-serif) !important;
+  letter-spacing: 0 !important;
+  text-align: left !important;
+}
 
+/* Títulos de las noticias */
+.Group .news h2 {
+  margin: .4rem 0 .2rem !important;
+  font: 400 1.45rem/1.2 var(--ag-serif) !important;
+}
+.Group .news td > div > i { color: var(--ag-muted); font-style: normal; font-size: .85rem; }
+.Group .news p { line-height: 1.6; }
+
+/* ---------- Tablas ---------- */
+.Group table { border-collapse: collapse !important; background: none !important; }
+.Group td {
+  padding: .5rem 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--ag-line) !important;
+  background: none !important;
+  color: var(--ag-ink) !important;
+}
+.Group tbody tr { background: none !important; }
+.Group tbody tr:hover { background: var(--ag-soft) !important; }
+
+/* Escaleras: piedras de go */
+.Group .ladders a { font-family: var(--ag-serif); font-size: 1.15rem; }
+.Group .ladders > div > a::before {
+  content: '';
+  display: inline-block;
+  width: .7em; height: .7em;
+  margin-right: .5em;
+  border: 1.5px solid var(--ag-ink);
+  border-radius: 50%;
+  background: var(--ag-ink);
+  vertical-align: .05em;
+}
+.Group .ladders > div:nth-of-type(odd) > a::before { background: var(--ag-paper); }
+
+/* ---------- Enlaces ---------- */
+.Group a, .Group .Player { color: var(--ag-ink) !important; text-decoration: none; }
+.Group a:hover, .Group .Player:hover { text-decoration: underline !important; text-underline-offset: 3px; }
+.Group .Player-rank { color: var(--ag-muted) !important; }
+
+/* ---------- Botones ---------- */
 .Group button, .Group .btn {
-  border: 1px solid var(--ag-gold) !important;
-  border-radius: 4px !important;
-  background: linear-gradient(180deg, #b8503a, #8e3524) !important;
-  color: var(--ag-stucco) !important;
-  font-family: 'Inter', sans-serif !important;
-  font-weight: 600 !important;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, .3) !important;
-  transition: filter .15s ease, transform .15s ease !important;
+  border: 1px solid var(--ag-ink) !important;
+  border-radius: 0 !important;
+  background: var(--ag-ink) !important;
+  color: var(--ag-paper) !important;
+  font: 600 .8rem var(--ag-sans) !important;
+  letter-spacing: .12em !important;
+  text-transform: uppercase;
+  box-shadow: none !important;
+  transition: background .15s ease, color .15s ease !important;
 }
-.Group button:hover, .Group .btn:hover { filter: brightness(1.12); transform: translateY(-1px); }
+.Group button:hover, .Group .btn:hover { background: var(--ag-paper) !important; color: var(--ag-ink) !important; }
 
-/* ---------- Tablas (miembros, escaleras) ---------- */
-.Group table { border-collapse: separate !important; border-spacing: 0 !important; }
-.Group th { padding: .6rem !important; background: var(--ag-panel-2) !important; color: var(--ag-gold-soft) !important; }
-.Group td { padding: .55rem .6rem !important; border-color: rgba(201, 162, 74, .08) !important; color: var(--ag-text) !important; }
-.Group tbody tr:nth-child(even) { background: rgba(255, 255, 255, .02) !important; }
-.Group tbody tr:hover { background: rgba(143, 199, 192, .07) !important; }
-.Group .ladders tbody tr:nth-child(1) { box-shadow: inset 4px 0 #c9a24a; }
-.Group .ladders tbody tr:nth-child(2) { box-shadow: inset 4px 0 #b8c0c2; }
-.Group .ladders tbody tr:nth-child(3) { box-shadow: inset 4px 0 #b06a3e; }
-
+/* ---------- Formularios, paginación y chat ---------- */
 .Group input, .Group textarea, .Group select {
-  border: 1px solid rgba(201, 162, 74, .25) !important;
-  border-radius: 4px !important;
-  background: #0b1518 !important;
-  color: var(--ag-text) !important;
+  border: 1px solid var(--ag-ink) !important;
+  border-radius: 0 !important;
+  background: var(--ag-paper) !important;
+  color: var(--ag-ink) !important;
+  box-shadow: none !important;
 }
-.Group blockquote { padding: .8rem 1rem; border-left: 3px solid var(--ag-gold) !important; background: rgba(201, 162, 74, .06) !important; }
-.Group hr { border-color: rgba(201, 162, 74, .15) !important; }
+.Group .page-controls, .Group .page-controls i { color: var(--ag-muted) !important; }
+.Group .ChatLog, .Group .chat-lines, .Group .chat-input-wrapper { background: var(--ag-paper) !important; color: var(--ag-ink) !important; }
+.Group .loading-overlay { background: rgba(255, 255, 255, .85) !important; color: var(--ag-muted) !important; }
+
+.Group blockquote { padding: .4rem 1rem; border-left: 1px solid var(--ag-ink) !important; background: none !important; font-family: var(--ag-serif); }
+.Group hr { border: 0 !important; border-top: 1px solid var(--ag-ink) !important; }
 
 /* ==========================================================
    Contenido de la descripción (clases .ag-*)
    ========================================================== */
-.ag { font-family: 'Inter', sans-serif; color: var(--ag-text); line-height: 1.6; }
+.ag { font-family: var(--ag-sans); color: var(--ag-ink); line-height: 1.6; margin-top: 1rem; }
 .ag-kicker {
-  margin: 0 0 .2rem;
-  color: var(--ag-terracotta);
-  font-size: .75rem; font-weight: 600; letter-spacing: .25em; text-transform: uppercase;
+  margin: 0 0 .3rem;
+  color: var(--ag-muted);
+  font-size: .78rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase;
 }
 .ag-lead {
-  margin: 0 0 1.4rem;
-  font: 500 1.35rem/1.35 'Cormorant Garamond', serif;
-  color: var(--ag-stucco);
+  margin: 0 0 1.6rem;
+  font: 400 1.5rem/1.3 var(--ag-serif);
+  color: var(--ag-ink);
 }
 .ag-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-  gap: .9rem;
-  margin-bottom: 1.4rem;
+  gap: 1.25rem;
+  margin-bottom: 1.6rem;
 }
-/* Tarjetas con remate de arco */
 .ag-card {
-  position: relative;
-  padding: 1.6rem 1rem 1rem;
-  text-align: center;
-  border: 1px solid rgba(201, 162, 74, .35);
-  border-radius: 50% 50% 8px 8px / 34px 34px 8px 8px;
-  background: linear-gradient(180deg, rgba(31, 90, 94, .35), rgba(19, 35, 42, .6));
+  padding: .9rem 0 0;
+  border-top: 1px solid var(--ag-ink);
 }
+/* Una piedra de go en cada tarjeta, alternando negra y blanca */
 .ag-card::before {
-  content: '✦';
+  content: '';
   display: block;
-  margin-bottom: .3rem;
-  color: var(--ag-gold);
-  font-size: 1rem;
+  width: 14px; height: 14px;
+  margin-bottom: .6rem;
+  border: 1.5px solid var(--ag-ink);
+  border-radius: 50%;
+  background: var(--ag-ink);
 }
+.ag-card:nth-child(even)::before { background: var(--ag-paper); }
 .ag-card h4 {
-  margin: 0 0 .3rem !important;
-  color: var(--ag-gold-soft) !important;
-  font: 700 1.2rem 'Cormorant Garamond', serif !important;
+  margin: 0 0 .25rem !important;
+  padding: 0 !important;
+  color: var(--ag-ink) !important;
+  font: 400 1.3rem/1.2 var(--ag-serif) !important;
 }
-.ag-card p { margin: 0; font-size: .9rem; color: var(--ag-text); }
+.ag-card p { margin: 0; font-size: .95rem; color: var(--ag-ink); }
 
-.ag-actions { display: flex; flex-wrap: wrap; gap: .7rem; justify-content: center; margin: .5rem 0 1rem; }
+.ag-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin: .5rem 0 1rem; }
 .ag-btn {
   display: inline-block;
-  padding: .7rem 1.4rem;
-  border: 1px solid var(--ag-gold);
-  border-radius: 4px;
-  background: linear-gradient(180deg, #b8503a, #8e3524);
-  color: var(--ag-stucco) !important;
-  font-weight: 600; font-size: .85rem; letter-spacing: .12em; text-transform: uppercase;
+  padding: .7rem 1.5rem;
+  border: 1px solid var(--ag-ink);
+  background: var(--ag-ink);
+  color: var(--ag-paper) !important;
+  font-weight: 600; font-size: .8rem; letter-spacing: .14em; text-transform: uppercase;
   text-decoration: none !important;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, .3);
-  transition: filter .15s ease, transform .15s ease;
+  transition: background .15s ease, color .15s ease;
 }
-.ag-btn:hover { filter: brightness(1.12); transform: translateY(-1px); }
-.ag-btn-alt { background: transparent; color: var(--ag-gold-soft) !important; }
+.ag-btn:hover { background: var(--ag-paper); color: var(--ag-ink) !important; }
+.ag-btn-alt { background: var(--ag-paper); color: var(--ag-ink) !important; }
+.ag-btn-alt:hover { background: var(--ag-ink); color: var(--ag-paper) !important; }
 
-.ag-note { text-align: center; font-size: .85rem; color: var(--ag-muted); margin: 0 0 1.2rem; }
-.ag-flags { display: flex; justify-content: center; opacity: .9; }
-.ag-flags img { border-radius: 4px; }
+.ag-note { font-size: .9rem; color: var(--ag-muted); margin: 0 0 1.2rem; }
+.ag-flags { display: flex; justify-content: flex-start; }
 
 /* ---------- Móvil ---------- */
 @media (max-width: 700px) {
-  .Group.container { margin: .5rem !important; }
-  .Group.container::before { font-size: .6rem; letter-spacing: .18em; white-space: normal; }
-  .Group > .row { padding: .7rem !important; }
-  .ag-lead { font-size: 1.15rem; }
+  .Group.container { margin: .5rem auto !important; padding: 0 .75rem !important; }
+  .Group.container::before { font-size: .68rem; letter-spacing: .14em; white-space: normal; }
+  .ag-lead { font-size: 1.25rem; }
 }
