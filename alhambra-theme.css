@@ -99,6 +99,19 @@ html, body {
     linear-gradient(var(--ag-gold), var(--ag-gold)) left center / 50px 1px no-repeat,
     linear-gradient(var(--ag-gold), var(--ag-gold)) right center / 50px 1px no-repeat;
 }
+/* Títulos de las noticias: más pequeños y sin remate */
+.Group .news h2,
+.Group .news h4,
+.Group .news .title,
+.Group .news .news-title {
+  margin: .6rem 0 .4rem !important;
+  font: 700 1.35rem/1.2 'Cormorant Garamond', serif !important;
+  letter-spacing: 0 !important;
+  text-shadow: none !important;
+  color: var(--ag-gold-soft) !important;
+}
+.Group .news h2::after { display: none !important; }
+
 .Group h3, .Group h4, .Group table caption {
   color: var(--ag-gold-soft) !important;
   font-family: 'Cormorant Garamond', serif !important;
