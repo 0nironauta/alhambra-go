@@ -17,7 +17,7 @@
 }
 
 /* ---------- Página ---------- */
-html, body {
+html, body, #main-content, #default-variant-container {
   background: var(--ag-paper) !important;
   color: var(--ag-ink) !important;
   font-family: var(--ag-sans) !important;
@@ -222,7 +222,7 @@ html, body {
 .ag-card p { margin: 0; font-size: .95rem; color: var(--ag-ink); }
 
 .ag-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin: .5rem 0 1rem; }
-.ag-btn {
+.Group .ag-btn, .ag-btn {
   display: inline-block;
   padding: .7rem 1.5rem;
   border: 1px solid var(--ag-ink);
@@ -232,9 +232,9 @@ html, body {
   text-decoration: none !important;
   transition: background .15s ease, color .15s ease;
 }
-.ag-btn:hover { background: var(--ag-paper); color: var(--ag-ink) !important; }
-.ag-btn-alt { background: var(--ag-paper); color: var(--ag-ink) !important; }
-.ag-btn-alt:hover { background: var(--ag-ink); color: var(--ag-paper) !important; }
+.Group .ag-btn:hover { background: var(--ag-paper); color: var(--ag-ink) !important; text-decoration: none !important; }
+.Group .ag-btn-alt { background: var(--ag-paper); color: var(--ag-ink) !important; }
+.Group .ag-btn-alt:hover { background: var(--ag-ink); color: var(--ag-paper) !important; }
 
 .ag-note { font-size: .9rem; color: var(--ag-muted); margin: 0 0 1.2rem; }
 .ag-flags { display: flex; justify-content: flex-start; }
