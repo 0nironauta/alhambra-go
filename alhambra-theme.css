@@ -72,6 +72,9 @@ html, body, #main-content, #default-variant-container {
 }
 
 /* ---------- Cabecera del grupo ---------- */
+/* El icono del grupo en piedras negras, como el logo de la web */
+.Group > .row .col-sm-9 > .Card > .row .col-sm-2 img { filter: invert(1); }
+
 .Group h2 {
   margin: 0 0 .6rem !important;
   color: var(--ag-ink) !important;
