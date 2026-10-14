@@ -1,0 +1,322 @@
+/* ==========================================================
+   0nironauta · tema de perfil OGS
+   Dirección: interfaz HUD de nave onírica. Negro espacial,
+   índigo profundo, cian y violeta en neón, esquinas en chaflán,
+   tipografía técnica y datos en monoespaciada.
+   ========================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=JetBrains+Mono:wght@400;600&family=Inter:wght@400;500&display=swap');
+
+:root {
+  --on-void: #05060d;
+  --on-deep: #0a0d1f;
+  --on-panel: rgba(14, 18, 42, .78);
+  --on-line: rgba(94, 234, 255, .22);
+  --on-cyan: #5eeaff;
+  --on-violet: #a78bfa;
+  --on-magenta: #f472d0;
+  --on-text: #d7defa;
+  --on-muted: #7f89b3;
+  --on-head: 'Chakra Petch', 'Segoe UI', sans-serif;
+  --on-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --on-body: 'Inter', system-ui, sans-serif;
+  --on-cut: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+}
+
+/* ---------- Espacio de fondo: nebulosa + rejilla en perspectiva + estrellas ---------- */
+html, body, #main-content, #default-variant-container {
+  background-color: var(--on-void) !important;
+  color: var(--on-text) !important;
+  font-family: var(--on-body) !important;
+}
+#main-content {
+  background:
+    radial-gradient(1px 1px at 12% 18%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 78% 9%, #cfe9ff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 33% 62%, #a78bfa 50%, transparent 51%),
+    radial-gradient(1px 1px at 91% 47%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 57% 83%, #5eeaff 50%, transparent 51%),
+    radial-gradient(1px 1px at 4% 71%, #fff 50%, transparent 51%),
+    radial-gradient(ellipse 70% 50% at 85% 0%, rgba(167, 139, 250, .22), transparent 70%),
+    radial-gradient(ellipse 60% 45% at 5% 30%, rgba(94, 234, 255, .12), transparent 70%),
+    linear-gradient(180deg, #070a1c 0%, var(--on-void) 60%) !important;
+  background-size: 420px 420px, 380px 380px, 520px 520px, 460px 460px, 610px 610px, 350px 350px, auto, auto, auto !important;
+  background-attachment: fixed !important;
+}
+
+/* Rejilla de horizonte en la parte baja de la pantalla */
+#main-content::before {
+  content: '';
+  position: fixed;
+  inset: auto 0 0 0;
+  height: 38vh;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    linear-gradient(transparent 0 calc(100% - 1px), rgba(94, 234, 255, .18) 0) 0 0 / 100% 34px,
+    linear-gradient(90deg, transparent 0 calc(100% - 1px), rgba(94, 234, 255, .14) 0) 0 0 / 60px 100%;
+  transform: perspective(380px) rotateX(62deg);
+  transform-origin: bottom;
+  mask-image: linear-gradient(transparent, #000 70%);
+  -webkit-mask-image: linear-gradient(transparent, #000 70%);
+}
+
+/* Líneas de barrido muy sutiles */
+#main-content::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: repeating-linear-gradient(0deg, rgba(255, 255, 255, .018) 0 1px, transparent 1px 3px);
+}
+
+/* ---------- Contenedor ---------- */
+.User.container {
+  position: relative;
+  z-index: 2;
+  max-width: 1240px !important;
+  color: var(--on-text) !important;
+  background: transparent !important;
+}
+
+/* Cabecera tipo consola encima de todo */
+.User.container::before {
+  content: '◢ SISTEMA ONÍRICO EN LÍNEA  ·  NAVEGANTE 0NIRONAUTA  ·  SECTOR GRANADA ◣';
+  display: block;
+  margin: 1rem 0 1.25rem;
+  padding: .55rem 1rem;
+  border: 1px solid var(--on-line);
+  background: linear-gradient(90deg, rgba(94, 234, 255, .08), rgba(167, 139, 250, .08));
+  color: var(--on-cyan);
+  font: 600 .72rem var(--on-mono);
+  letter-spacing: .22em;
+  text-align: center;
+  text-shadow: 0 0 10px rgba(94, 234, 255, .6);
+  clip-path: var(--on-cut);
+}
+
+/* ---------- Paneles con esquinas en chaflán ---------- */
+.User .profile-card,
+.User .Card,
+.User .active-games,
+.User .ratings-chart {
+  position: relative;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background:
+    linear-gradient(var(--on-panel), var(--on-panel)) padding-box,
+    linear-gradient(135deg, var(--on-cyan), rgba(94, 234, 255, .1) 30%, rgba(167, 139, 250, .1) 70%, var(--on-violet)) border-box !important;
+  border: 1px solid transparent !important;
+  box-shadow: 0 0 0 1px rgba(5, 6, 13, .6), 0 20px 50px rgba(0, 0, 0, .45) !important;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: var(--on-text) !important;
+  clip-path: var(--on-cut);
+}
+.User .Card { margin-bottom: 1.25rem !important; }
+
+/* ---------- Tarjeta de perfil ---------- */
+.User .profile-card { padding: 1.25rem !important; margin-bottom: 1.25rem; }
+
+.User .avatar-container .PlayerIcon-128 {
+  border-radius: 50% !important;
+  padding: 4px;
+  background: conic-gradient(from 0deg, var(--on-cyan), var(--on-violet), var(--on-magenta), var(--on-cyan));
+  box-shadow: 0 0 24px rgba(94, 234, 255, .45), 0 0 60px rgba(167, 139, 250, .25);
+  animation: on-pulse 4s ease-in-out infinite;
+}
+@keyframes on-pulse {
+  50% { box-shadow: 0 0 34px rgba(167, 139, 250, .55), 0 0 80px rgba(94, 234, 255, .25); }
+}
+
+.User .username .Player-username {
+  color: #fff !important;
+  font: 700 1.9rem/1.1 var(--on-head) !important;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  text-shadow: 0 0 14px rgba(94, 234, 255, .55);
+}
+.User .username .Player-rank {
+  color: var(--on-magenta) !important;
+  font: 600 1rem var(--on-mono) !important;
+  text-shadow: 0 0 10px rgba(244, 114, 208, .6);
+}
+.User .country-line, .User .website-url { font-family: var(--on-mono); font-size: .82rem; color: var(--on-muted) !important; }
+
+/* Tabla de ratings como lectura de instrumentos */
+.User .ratings-grid { font-family: var(--on-mono) !important; }
+.User .ratings-grid .title { color: var(--on-muted) !important; font-size: .75rem; letter-spacing: .12em; }
+.User .ratings-grid .speed-icon { color: var(--on-violet) !important; }
+.User .rating-entry { border-radius: 0 !important; background: rgba(94, 234, 255, .03) !important; border: 1px solid rgba(94, 234, 255, .08) !important; }
+.User .rating-entry .rating { color: var(--on-text) !important; }
+.User .rating-entry.active {
+  background: rgba(94, 234, 255, .1) !important;
+  border-color: var(--on-cyan) !important;
+  box-shadow: 0 0 16px rgba(94, 234, 255, .35), inset 0 0 12px rgba(94, 234, 255, .15) !important;
+}
+.User .ratings-title, .User .toggle-container { color: var(--on-muted) !important; }
+
+/* ---------- Títulos ---------- */
+.User h2, .User h3, .User h4,
+.User .active-games-header {
+  color: #fff !important;
+  font-family: var(--on-head) !important;
+  font-weight: 600 !important;
+  letter-spacing: .14em !important;
+  text-transform: uppercase;
+}
+.User h2::before, .User .active-games-header::before {
+  content: '// ';
+  color: var(--on-cyan);
+  text-shadow: 0 0 10px rgba(94, 234, 255, .7);
+}
+.User h2 { font-size: 1.25rem !important; margin: 1.5rem 0 .75rem !important; }
+.User h3, .User h4 { font-size: .95rem !important; color: var(--on-cyan) !important; }
+.User .active-games-header { padding: .9rem 1rem .4rem; font-size: 1rem; }
+
+/* ---------- Partidas activas: miniaturas con halo ---------- */
+.User .MiniGoban { transition: transform .2s ease, filter .2s ease; }
+.User .MiniGoban:hover { transform: translateY(-3px); filter: drop-shadow(0 0 12px rgba(94, 234, 255, .6)); }
+.User .MiniGoban, .User .MiniGoban * { color: var(--on-text) !important; }
+
+/* ---------- Tablas (historial, revisiones) ---------- */
+.User table { border-collapse: collapse !important; background: transparent !important; }
+.User th {
+  background: rgba(94, 234, 255, .06) !important;
+  color: var(--on-cyan) !important;
+  font: 600 .72rem var(--on-mono) !important;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--on-line) !important;
+}
+.User td {
+  background: transparent !important;
+  color: var(--on-text) !important;
+  border-color: rgba(94, 234, 255, .07) !important;
+  font-size: .9rem;
+}
+.User tbody tr:hover td { background: rgba(167, 139, 250, .09) !important; }
+
+/* ---------- Enlaces, botones, campos ---------- */
+.User a, .User .Player { color: var(--on-cyan) !important; text-decoration: none !important; }
+.User a:hover, .User .Player:hover { color: #fff !important; text-shadow: 0 0 10px rgba(94, 234, 255, .8); }
+
+.User button, .User .btn {
+  border: 1px solid var(--on-cyan) !important;
+  border-radius: 0 !important;
+  background: rgba(94, 234, 255, .08) !important;
+  color: var(--on-cyan) !important;
+  font: 600 .78rem var(--on-mono) !important;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  box-shadow: none !important;
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+  transition: background .15s ease, color .15s ease !important;
+}
+.User button:hover, .User .btn:hover { background: var(--on-cyan) !important; color: var(--on-void) !important; }
+
+.User input, .User select, .User textarea {
+  border: 1px solid var(--on-line) !important;
+  border-radius: 0 !important;
+  background: rgba(5, 6, 13, .7) !important;
+  color: var(--on-text) !important;
+  font-family: var(--on-mono) !important;
+}
+.User .page-controls, .User .page-controls i { color: var(--on-muted) !important; }
+.User .loading-overlay { background: rgba(5, 6, 13, .8) !important; color: var(--on-cyan) !important; }
+
+/* Actividad y trofeos */
+.User .activity-card dl, .User .activity-card dt, .User .activity-card dd,
+.User .activity-card div { color: var(--on-text) !important; }
+.User .activity-card dt { color: var(--on-muted) !important; font-family: var(--on-mono); font-size: .8rem; }
+.User .trophies img { filter: drop-shadow(0 0 8px rgba(167, 139, 250, .5)); }
+
+/* ==========================================================
+   Contenido del «Acerca de» (clases .on-*)
+   ========================================================== */
+.on { padding: .5rem .25rem; font-family: var(--on-body); color: var(--on-text); line-height: 1.6; }
+
+.on-boot {
+  margin: 0 0 1rem;
+  color: var(--on-muted);
+  font: 400 .8rem/1.7 var(--on-mono);
+}
+.on-boot b { color: var(--on-cyan); font-weight: 600; }
+.on-ok { color: #6ee7b7; }
+
+.on-title {
+  margin: 0 0 .25rem;
+  color: #fff;
+  font: 700 clamp(1.8rem, 4vw, 2.6rem)/1.05 var(--on-head);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #fff, var(--on-cyan) 45%, var(--on-violet) 75%, var(--on-magenta));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.on-sub {
+  margin: 0 0 1.25rem;
+  color: var(--on-muted);
+  font: 400 .85rem var(--on-mono);
+  letter-spacing: .08em;
+}
+.on-caret::after {
+  content: '▍';
+  margin-left: .15em;
+  color: var(--on-cyan);
+  animation: on-blink 1s steps(1) infinite;
+}
+@keyframes on-blink { 50% { opacity: 0; } }
+
+.on-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: .75rem;
+  margin-bottom: 1.25rem;
+}
+.on-cell {
+  padding: .75rem .9rem;
+  border-left: 2px solid var(--on-cyan);
+  background: linear-gradient(90deg, rgba(94, 234, 255, .08), transparent);
+}
+.on-cell:nth-child(2) { border-color: var(--on-violet); background: linear-gradient(90deg, rgba(167, 139, 250, .1), transparent); }
+.on-cell:nth-child(3) { border-color: var(--on-magenta); background: linear-gradient(90deg, rgba(244, 114, 208, .08), transparent); }
+.on-label {
+  display: block;
+  color: var(--on-muted);
+  font: 600 .68rem var(--on-mono);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+.on-value { display: block; color: #fff; font: 600 1.05rem var(--on-head); letter-spacing: .03em; }
+
+.on-actions { display: flex; flex-wrap: wrap; gap: .7rem; margin: 0 0 1.25rem; }
+.User .on-btn {
+  display: inline-block;
+  padding: .65rem 1.3rem;
+  border: 1px solid var(--on-cyan);
+  background: rgba(94, 234, 255, .1);
+  color: var(--on-cyan) !important;
+  font: 600 .78rem var(--on-mono);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  transition: background .15s ease, color .15s ease;
+}
+.User .on-btn:hover { background: var(--on-cyan); color: var(--on-void) !important; text-shadow: none; }
+.User .on-btn-alt { border-color: var(--on-violet); background: rgba(167, 139, 250, .1); color: var(--on-violet) !important; }
+.User .on-btn-alt:hover { background: var(--on-violet); color: var(--on-void) !important; }
+
+.on-flags { opacity: .9; }
+.on-flags img { display: block; border: 1px solid var(--on-line); }
+
+/* ---------- Accesibilidad y móvil ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .User .avatar-container .PlayerIcon-128, .on-caret::after { animation: none !important; }
+}
+@media (max-width: 700px) {
+  .User.container::before { font-size: .6rem; letter-spacing: .12em; }
+  #main-content::before { display: none; }
+}
